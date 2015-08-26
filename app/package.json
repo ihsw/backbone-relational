@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.5.2",
+    "coffee-script": "^1.9.3",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-develop-server": "^0.4.3"
+  }
+}
