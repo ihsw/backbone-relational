@@ -2,7 +2,6 @@
 
 CURRENT_DIR=$(pwd)
 docker start $(docker create \
-	-it \
 	--name backbone-relational \
 	-p 80:80 \
 	-v $CURRENT_DIR/app:/srv/app \
