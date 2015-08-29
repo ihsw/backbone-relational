@@ -5,6 +5,13 @@ $ ->
       part2: 'world'
   }
   List = Backbone.Collection.extend { model: Item }
+  ItemView = Backbone.View.extend {
+    tagName: 'li'
+    render: ->
+      $(@el).html "#{@model.get('part1')} #{@model.get('part2')}"
+      @
+  }
+
   ListView = Backbone.View.extend {
     el: $ 'body'
     events:
@@ -26,6 +33,7 @@ $ ->
       }
       @collection.add item
     appendItem: (item) ->
-      $('ul', @el).append "<li>#{item.get('part1')} #{item.get('part2')}</li>"
+      itemView = new ItemView { model: item }
+      $('ul', @el).append itemView.render().el
   }
   listView = new ListView()
