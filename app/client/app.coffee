@@ -1,4 +1,6 @@
 $ ->
+  Backbone.sync = (method, model, success, error) -> success()
+
   Item = Backbone.Model.extend {
     defaults:
       part1: 'hello'
@@ -7,9 +9,28 @@ $ ->
   List = Backbone.Collection.extend { model: Item }
   ItemView = Backbone.View.extend {
     tagName: 'li'
+    events:
+      'click span.swap': 'swap'
+      'click span.delete': 'remove'
+    initialize: ->
+      _.bindAll @, 'render', 'unrender', 'swap', 'remove'
+      @model.bind 'change', @render
+      @model.bind 'remove', @unrender
     render: ->
-      $(@el).html "#{@model.get('part1')} #{@model.get('part2')}"
+      $(@el).html "<span style='color: black; '>#{@model.get('part1')}
+        #{@model.get('part2')}</span> &nbsp;&nbsp;
+        <span class='swap' style='font-family:sans-serif; color:blue;
+        cursor:pointer;'>[swap]</span>
+        <span class='delete' style='cursor:pointer; color:red;
+        font-family:sans-serif;'>[delete]</span>"
       @
+    unrender: -> $(@el).remove()
+    swap: ->
+      swapped =
+        part1: @model.get 'part2'
+        part2: @model.get 'part1'
+      @model.set swapped
+    remove: -> @model.destroy()
   }
 
   ListView = Backbone.View.extend {
