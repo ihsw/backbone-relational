@@ -4,5 +4,15 @@ head
   script(src='/vendor.js')
   script(src='/client.js')
   link(rel='stylesheet' href='/vendor.css')
+  script#store-index(type='text/template')
+    button#add Add Phone
+    ul
+  script#phone-view(type='text/template')
+    span(style='color: black')
+      span.part1 &nbsp;
+      span.part2
+      span.swap(style='font-family: sans-serif; color: blue; cursor: pointer') &nbsp; [swap] &nbsp;
+      span.delete(style='cursor: pointer; color: red; font-family: sans-serif; ') [delete]
 body
   h1 Hello, world!
+  #content

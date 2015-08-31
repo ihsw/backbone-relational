@@ -9,9 +9,9 @@ app.StoreView = Backbone.View.extend {
     @counter = 0
     @render()
   render: ->
-    $(@el).append '<button id="add">Add phone</button>'
-    $(@el).append '<ul></ul>'
+    @$el.html $('#store-index').html()
     @append phone for phone in @collection.models
+    @
   add: ->
     @counter++
     phone = new app.Phone()

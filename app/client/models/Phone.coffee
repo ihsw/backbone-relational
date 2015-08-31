@@ -14,12 +14,11 @@ app.PhoneView = Backbone.View.extend {
     @model.bind 'change', @render
     @model.bind 'remove', @unrender
   render: ->
-    $(@el).html "<span style='color: black; '>#{@model.get('part1')}
-      #{@model.get('part2')}</span> &nbsp;&nbsp;
-      <span class='swap' style='font-family:sans-serif; color:blue;
-      cursor:pointer;'>[swap]</span>
-      <span class='delete' style='cursor:pointer; color:red;
-      font-family:sans-serif;'>[delete]</span>"
+    content = $('#phone-view').html()
+    $el = $ "<div>#{content}</div>"
+    $('.part1', $el).text @model.get 'part1'
+    $('.part2', $el).text @model.get 'part2'
+    @$el.html $el.html()
     @
   unrender: -> $(@el).remove()
   swap: ->
