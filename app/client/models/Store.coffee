@@ -2,24 +2,30 @@ app = window.app
 app.Store = Backbone.Collection.extend { model: app.Phone }
 app.StoreView = Backbone.View.extend {
   events:
-    'click button#add': 'add'
+    'submit form': 'submit'
   initialize: ->
+    _.bindAll @, 'append'
     @collection = new app.Store()
     @collection.bind 'add', @append
-    @counter = 0
     @render()
   render: ->
     @$el.html $('#store-index').html()
-    @append phone for phone in @collection.models
+    @renderReflow()
+  renderReflow: ->
+    $('#phones-list', @$el).toggleClass 'hide', @collection.length == 0
+    $('#empty-phones', @$el).toggleClass 'hide', @collection.length > 0
     @
-  add: ->
-    @counter++
-    phone = new app.Phone()
-    phone.set {
-      part2: phone.get('part2') + @counter
-    }
+  submit: (e) ->
+    e.preventDefault()
+    $phoneInput = $('#phone-name', @el)
+
+    phone = new app.Phone { name: $phoneInput.val() }
     @collection.add phone
+
+    $phoneInput.val ''
+    @
   append: (phone) ->
-    phoneView = new app.PhoneView { model: phone }
-    $('ul', @el).append phoneView.render().el
+    phoneView = (new app.PhoneView { model: phone })
+    $('#phones-list', @el).append phoneView.render().el
+    @renderReflow()
 }

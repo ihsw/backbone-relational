@@ -5,14 +5,23 @@ head
   script(src='/client.js')
   link(rel='stylesheet' href='/vendor.css')
   script#store-index(type='text/template')
-    button#add Add Phone
-    ul
+    p.alert.alert-info.hide#empty-phones
+      span No phones found!
+    ul.hide#phones-list
+    form
+      input.form-control#phone-name(type='text', placeholder='Phone name')
   script#phone-view(type='text/template')
-    span(style='color: black')
-      span.part1 &nbsp;
-      span.part2
-      span.swap(style='font-family: sans-serif; color: blue; cursor: pointer') &nbsp; [swap] &nbsp;
-      span.delete(style='cursor: pointer; color: red; font-family: sans-serif; ') [delete]
+    span.phone-name
 body
-  h1 Hello, world!
-  #content
+  .container
+    .row
+      .col-xs-4
+        h4 Phones
+        #sidebar
+      .col-xs-8
+        h4 Lipsum dolor sit amet
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet maximus tortor, nec maximus sem. Sed cursus erat sit amet fermentum pharetra. Duis blandit nunc lorem, sit amet suscipit leo sollicitudin quis. Aenean viverra tincidunt justo quis scelerisque. Nulla hendrerit, tellus porttitor interdum auctor, elit nisi porttitor quam, sit amet bibendum diam dui nec leo. Integer ac lectus venenatis, lobortis elit nec, luctus magna. Morbi et augue sed mauris ultrices blandit ut id dolor. Nam euismod ultricies accumsan. Mauris nec est et nulla tincidunt egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan augue id sagittis malesuada. In at est aliquam, euismod nibh vel, luctus nulla.
+        p Nulla id enim turpis. Quisque ut purus magna. Aenean mi massa, sodales eu finibus ac, varius at erat. Aliquam semper diam quis dui congue efficitur. Nam nec placerat leo, vitae viverra mauris. Mauris vel mattis leo, sed efficitur diam. Integer porttitor maximus augue, ac luctus leo interdum nec. In maximus, arcu in varius hendrerit, massa ante dignissim est, blandit auctor augue nulla ut urna. Donec interdum enim sed dui malesuada finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu est arcu. Vestibulum nunc ante, varius vitae pretium sed, fringilla et ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut vitae lorem dolor. Mauris diam elit, hendrerit vel egestas eget, varius id lectus.
+        p Sed nisi ligula, hendrerit vel eleifend quis, dignissim at sem. Vivamus pretium dapibus odio quis maximus. Sed tincidunt dapibus laoreet. Fusce molestie placerat luctus. Donec vel sapien non neque molestie placerat non quis turpis. Nunc faucibus est non ex gravida, quis maximus diam cursus. Nam ac risus ut eros aliquam consequat et eu enim. Fusce imperdiet augue tortor, in pharetra ante ornare ac.
+        p Fusce nec hendrerit nulla, sit amet feugiat nisl. Vivamus ullamcorper sem sit amet elit pretium, eget varius ex condimentum. Sed tincidunt purus ut purus tristique, ut rhoncus felis tristique. Phasellus ultricies vehicula vestibulum. Vivamus sit amet risus eget enim facilisis convallis. Fusce luctus tellus vel dui gravida, a aliquam justo mattis. Nullam feugiat sagittis justo ut placerat. Vestibulum malesuada malesuada nunc, sed hendrerit nibh. Nunc elementum congue neque, scelerisque dignissim mauris sollicitudin sed. Aenean in ligula et leo aliquam interdum eu at erat. Nullam non nibh euismod, tristique augue a, efficitur elit. Aenean cursus sagittis enim eget convallis. Suspendisse odio ante, tempus sed consectetur non, porta eu arcu.
+        p Sed nec ligula vel sapien consectetur hendrerit sit amet sed ipsum. Nullam a pulvinar justo, vel bibendum magna. Phasellus molestie faucibus efficitur. Nulla fermentum, velit at consectetur pharetra, nisi elit fermentum eros, eu tincidunt sapien turpis ac ex. Integer mi tortor, venenatis eu dignissim ac, vulputate eget lectus. Morbi pretium auctor mollis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus eget ipsum vel quam sagittis consequat. In eu blandit ligula. Donec pharetra feugiat magna, a ullamcorper augue aliquet a. Vestibulum eu velit feugiat, ullamcorper ipsum et, posuere libero. Nulla facilisi. Aliquam mattis scelerisque leo, condimentum dapibus ligula ornare eget.
