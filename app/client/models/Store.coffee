@@ -20,6 +20,7 @@ app.StoreView = Backbone.View.extend {
     $phoneInput = $('#phone-name', @el)
 
     phone = new app.Phone { name: $phoneInput.val() }
+    phone.save()
     @collection.add phone
 
     $phoneInput.val ''

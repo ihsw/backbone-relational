@@ -1,5 +1,7 @@
 app = window.app
-app.Phone = Backbone.Model.extend { }
+app.Phone = Backbone.Model.extend {
+  urlRoot: '/phone'
+}
 app.PhoneView = Backbone.View.extend {
   tagName: 'li'
   render: ->
