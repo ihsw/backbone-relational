@@ -12,8 +12,7 @@ app.PhoneView = Backbone.View.extend {
   renderReflow: ->
     $('.phone-name', @$el).text @model.get 'name'
     @
-  destroy: (e) ->
-    e.preventDefault()
+  destroy: ->
     @model.destroy()
     @remove()
 }
