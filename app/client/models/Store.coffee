@@ -1,5 +1,8 @@
 app = window.app
-app.Store = Backbone.Collection.extend { model: app.Phone }
+app.Store = Backbone.Collection.extend {
+  model: app.Phone
+  url: '/phones'
+}
 app.StoreView = Backbone.View.extend {
   events:
     'submit form': 'submit'
@@ -7,6 +10,7 @@ app.StoreView = Backbone.View.extend {
     _.bindAll @, 'append'
     @collection = new app.Store()
     @collection.bind 'add', @append
+    @collection.fetch()
     @render()
   render: ->
     @$el.html $('#store-index').html()
@@ -26,7 +30,7 @@ app.StoreView = Backbone.View.extend {
     $phoneInput.val ''
     @
   append: (phone) ->
-    phoneView = (new app.PhoneView { model: phone })
+    phoneView = new app.PhoneView { model: phone }
     $('#phones-list', @el).append phoneView.render().el
     @renderReflow()
 }
